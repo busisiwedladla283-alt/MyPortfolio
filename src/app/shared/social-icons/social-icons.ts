@@ -1,6 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon?: string;
+  iconSvg?: string;
+  ariaLabel: string;
+  isScroll?: boolean;
+}
+
 @Component({
   selector: 'app-social-icons',
   standalone: true,
@@ -12,7 +21,7 @@ export class SocialIcons {
   @Input() layout: 'horizontal' | 'vertical' | 'hero' = 'horizontal';
   @Input() showLabels: boolean = false;
 
-  socials = [
+  socials: SocialLink[] = [
     {
       name: 'GitHub',
       url: 'https://github.com/The-DigitalAcademy/city-fix',
@@ -27,9 +36,24 @@ export class SocialIcons {
     },
     {
       name: 'Email',
-      url: 'bucydladla590421@gmail.com',
+      url: '#contact',
       iconSvg: 'email',
-      ariaLabel: 'Send email to Busisiwe Dladla'
+      ariaLabel: 'Get in touch with Busisiwe Dladla',
+      isScroll: true
     }
   ];
+
+  handleClick(item: SocialLink, event: Event): void {
+    if (item.isScroll) {
+      event.preventDefault();
+      const targetId = item.url.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        if (typeof window !== 'undefined' && window.history) {
+          window.history.pushState(null, '', item.url);
+        }
+      }
+    }
+  }
 }

@@ -1,8 +1,9 @@
 <div class="social-container" [class.vertical]="layout === 'vertical'" [class.hero-layout]="layout === 'hero'">
   @for (item of socials; track item.name) {
     <a [href]="item.url" 
-       target="_blank" 
-       rel="noopener noreferrer"
+       [attr.target]="item.isScroll ? null : '_blank'" 
+       [attr.rel]="item.isScroll ? null : 'noopener noreferrer'"
+       (click)="handleClick(item, $event)"
        class="social-link" 
        [attr.aria-label]="item.ariaLabel"
        [title]="item.name">
