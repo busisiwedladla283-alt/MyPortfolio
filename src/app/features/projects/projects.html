@@ -1,0 +1,158 @@
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-tag">
+        <span class="pulse-dot"></span>
+        FEATURED WORK
+      </span>
+      <h2 class="section-title">
+        Featured <span class="gradient-text">Project</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+        A hands-on full-stack web application built with Angular, Spring Boot, Java, and PostgreSQL.
+      </p>
+    </div>
+
+    <!-- Filter Tabs -->
+    @if (filterOptions.length > 1) {
+      <div class="filter-tabs-container">
+        <div class="filter-tabs">
+          @for (opt of filterOptions; track opt.id) {
+            <button class="filter-tab-btn" 
+                    [class.active]="activeFilter() === opt.id"
+                    (click)="setFilter(opt.id)">
+              {{ opt.label }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of displayedProjects; track project.id) {
+        <article class="project-card glass-card" [class.featured-card]="project.featured">
+          
+          <!-- Project Image & Banner -->
+          <div class="project-banner-wrapper">
+            <img [src]="project.image" [alt]="project.title" class="project-image" loading="lazy">
+            <div class="image-overlay">
+              <button class="overlay-btn" (click)="openProjectModal(project)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5">
+                  <path d="M15 3h6v6"></path>
+                  <path d="M10 14 21 3"></path>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                </svg>
+                <span>View Details</span>
+              </button>
+            </div>
+            @if (project.featured) {
+              <span class="featured-badge">Featured Project</span>
+            }
+          </div>
+
+          <!-- Project Details -->
+          <div class="project-body">
+            
+            <div class="project-meta">
+              <span class="category-indicator">{{ project.category | uppercase }}</span>
+              <h3 class="project-title">{{ project.title }}</h3>
+              <p class="project-tagline">{{ project.tagline }}</p>
+            </div>
+
+            <p class="project-description">{{ project.description }}</p>
+
+            <!-- Key Features Highlights -->
+            <div class="project-highlights">
+              <h4 class="highlights-title">Key Highlights:</h4>
+              <ul class="highlights-list">
+                @for (feat of project.features.slice(0, 2); track feat) {
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>{{ feat }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Tech Stack Chips -->
+            <div class="tech-stack-chips">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-chip">{{ tech }}</span>
+              }
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="project-actions">
+              <a [href]="project.github" target="_blank" rel="noopener noreferrer" class="btn-github">
+                <i class="devicon-github-original"></i>
+                <span>Source Code</span>
+              </a>
+
+              <button class="btn-details" (click)="openProjectModal(project)">
+                <span>Project Details</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+        </article>
+      }
+    </div>
+
+  </div>
+
+  <!-- Project Detail Modal -->
+  @if (selectedProject()) {
+    <div class="modal-backdrop" (click)="closeProjectModal()">
+      <div class="modal-content glass-card" (click)="$event.stopPropagation()">
+        
+        <div class="modal-header">
+          <div>
+            <span class="category-indicator">{{ selectedProject()?.category | uppercase }}</span>
+            <h3 class="modal-title">{{ selectedProject()?.title }}</h3>
+          </div>
+          <button class="modal-close-btn" (click)="closeProjectModal()" aria-label="Close modal">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <img [src]="selectedProject()?.image" [alt]="selectedProject()?.title" class="modal-image">
+
+          <h4 class="modal-section-title">Overview &amp; Purpose</h4>
+          <p class="modal-text">{{ selectedProject()?.description }}</p>
+
+          <h4 class="modal-section-title">Key Features &amp; Implementation</h4>
+          <ul class="modal-features-list">
+            @for (feat of selectedProject()?.features; track feat) {
+              <li>
+                <span class="check-icon">✓</span>
+                <span>{{ feat }}</span>
+              </li>
+            }
+          </ul>
+
+          <h4 class="modal-section-title">Technologies &amp; Libraries</h4>
+          <div class="tech-stack-chips">
+            @for (tech of selectedProject()?.technologies; track tech) {
+              <span class="tech-chip">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <a [href]="selectedProject()?.github" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <i class="devicon-github-original"></i>
+            <span>View on GitHub</span>
+          </a>
+          <button class="btn-secondary" (click)="closeProjectModal()">Close</button>
+        </div>
+
+      </div>
+    </div>
+  }
+</section>

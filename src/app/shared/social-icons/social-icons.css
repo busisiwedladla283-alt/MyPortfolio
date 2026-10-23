@@ -1,0 +1,51 @@
+.social-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-container.vertical {
+  flex-direction: column;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 20px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-link:hover {
+  color: #ffffff;
+  background: var(--gradient-main);
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 25px var(--primary-glow);
+}
+
+.social-svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-layout .social-link {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+.social-label {
+  font-size: 14px;
+  font-weight: 500;
+}

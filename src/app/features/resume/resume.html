@@ -1,0 +1,141 @@
+<section id="resume" class="resume-section">
+  <div class="resume-container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-tag">
+        <span class="pulse-dot"></span>
+        CREDENTIALS &amp; RESUME
+      </span>
+      <h2 class="section-title">
+        Education, Skills &amp; <span class="gradient-text">Qualifications</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+        Review my educational background, core technical competencies, and download my complete curriculum vitae.
+      </p>
+    </div>
+
+    <!-- Download Resume Banner -->
+    <div class="resume-banner glass-card">
+      <div class="banner-content">
+        <div class="banner-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="banner-svg">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div class="banner-text">
+          <h3>Busisiwe Dladla - Official Resume (CV)</h3>
+          <p>Comprehensive overview of full-stack proficiencies, project milestones, and software development qualifications.</p>
+        </div>
+      </div>
+
+      <div class="banner-actions">
+        <a href="/documents/DladlaBusisiwe.pdf" target="_blank" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" x2="12" y1="15" y2="3"></line>
+          </svg>
+          <span>Download PDF CV</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="resume-tabs-wrapper">
+      <div class="resume-tabs">
+        <button class="resume-tab-btn" 
+                [class.active]="activeTab() === 'education'"
+                (click)="setTab('education')">
+          🎓 Education &amp; Training
+        </button>
+        <button class="resume-tab-btn" 
+                [class.active]="activeTab() === 'skills'"
+                (click)="setTab('skills')">
+          ⚡ Core Competencies
+        </button>
+        <button class="resume-tab-btn" 
+                [class.active]="activeTab() === 'certifications'"
+                (click)="setTab('certifications')">
+          📜 Specializations
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content-container">
+      
+      <!-- Education Tab -->
+      @if (activeTab() === 'education') {
+        <div class="tab-pane">
+          @for (edu of educationList; track edu.degree) {
+            <div class="education-card glass-card">
+              <div class="edu-header">
+                <div>
+                  <h3 class="edu-degree">{{ edu.degree }}</h3>
+                  <h4 class="edu-institution">{{ edu.institution }}</h4>
+                </div>
+                <span class="edu-period">{{ edu.period }}</span>
+              </div>
+
+              <p class="edu-desc">{{ edu.description }}</p>
+
+              <div class="edu-coursework">
+                <h5 class="coursework-title">Key Focus Areas &amp; Coursework:</h5>
+                <div class="coursework-chips">
+                  @for (course of edu.coursework; track course) {
+                    <span class="course-chip">
+                      <span class="dot"></span>
+                      {{ course }}
+                    </span>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Skills Competencies Tab -->
+      @if (activeTab() === 'skills') {
+        <div class="competencies-grid">
+          @for (group of competencyGroups; track group.category) {
+            <div class="competency-card glass-card">
+              <h3 class="group-title">{{ group.category }}</h3>
+              <ul class="competency-list">
+                @for (item of group.items; track item) {
+                  <li>
+                    <span class="check-icon">✓</span>
+                    <span>{{ item }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Certifications Tab -->
+      @if (activeTab() === 'certifications') {
+        <div class="certifications-grid">
+          @for (cert of certifications; track cert.title) {
+            <div class="cert-card glass-card">
+              <div class="cert-header">
+                <span class="cert-badge">{{ cert.badge }}</span>
+                <span class="cert-year">{{ cert.year }}</span>
+              </div>
+              <h3 class="cert-title">{{ cert.title }}</h3>
+              <p class="cert-issuer">{{ cert.issuer }}</p>
+            </div>
+          }
+        </div>
+      }
+
+    </div>
+
+  </div>
+</section>

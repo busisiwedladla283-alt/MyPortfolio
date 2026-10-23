@@ -1,0 +1,112 @@
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <!-- Ambient Background Glows -->
+    <div class="hero-bg-glow glow-top"></div>
+    <div class="hero-bg-glow glow-bottom"></div>
+
+    <div class="hero-container">
+      <div class="hero-grid">
+        
+        <!-- Left: Intro Text & CTAs -->
+        <div class="hero-text-content">
+          
+          <div class="status-pill animate-float">
+            <span class="status-dot"></span>
+            <span>Available for Opportunities</span>
+          </div>
+
+          <p class="greeting-text">HELLO, I'M</p>
+
+          <h1 class="hero-title">
+            <span class="name-first">Busisiwe</span>
+            <span class="name-last gradient-text">Dladla</span>
+          </h1>
+
+          <div class="role-badge-row">
+            <h2 class="hero-role">Aspiring Full Stack Developer</h2>
+        </div>
+
+          <p class="hero-description">
+            Passionate about learning and building responsive, user-friendly web applications. Developing practical full-stack skills with <strong>Angular, TypeScript, Java, Spring Boot, and PostgreSQL</strong>.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <button class="btn-primary" (click)="scrollToSection('projects')">
+              <span>View Projects</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </button>
+
+            <a href="/documents/DladlaBusisiwe.pdf" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" x2="12" y1="15" y2="3"></line>
+              </svg>
+              <span>Download CV</span>
+            </a>
+          </div>
+
+          <!-- Socials and Quick Tech Stack -->
+          <div class="hero-footer-row">
+            <div class="hero-social-group">
+              <span class="social-caption">Connect with me:</span>
+              <app-social-icons layout="hero"></app-social-icons>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Animated Portrait & Floating Badges -->
+        <div class="hero-visual-content">
+          <div class="portrait-container">
+            
+            <!-- Animated Glowing Outer Ring -->
+            <div class="portrait-ring"></div>
+            
+            <div class="portrait-image-wrapper">
+              <img src="/images/image.png" alt="Busisiwe Dladla - Full Stack Developer" class="portrait-img">
+            </div>
+
+            <!-- Floating Tech Badges -->
+            <div class="floating-badge badge-angular animate-float">
+              <i class="devicon-angularjs-plain colored"></i>
+              <span>Angular</span>
+            </div>
+
+            <div class="floating-badge badge-java animate-float-delayed">
+              <i class="devicon-java-plain colored"></i>
+              <span>Java &amp; Spring</span>
+            </div>
+
+            <div class="floating-badge badge-postgres animate-float">
+              <i class="devicon-postgresql-plain colored"></i>
+              <span>PostgreSQL</span>
+            </div>
+
+            <div class="floating-badge badge-realtime animate-float-delayed">
+              <span class="badge-emoji">⚡</span>
+              <span>WebSocket &amp; STOMP</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Sections -->
+  <app-about></app-about>
+  <app-skills></app-skills>
+  <app-projects></app-projects>
+  <app-journey></app-journey>
+  <app-resume></app-resume>
+  <app-contact></app-contact>
+</main>
+
+<!-- Footer -->
+<app-footer></app-footer>

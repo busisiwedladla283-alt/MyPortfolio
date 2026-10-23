@@ -1,0 +1,196 @@
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-tag">
+        <span class="pulse-dot"></span>
+        GET IN TOUCH
+      </span>
+      <h2 class="section-title">
+        Let's Connect &amp; <span class="gradient-text">Build Something Great</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+        Have an exciting junior full-stack role, project collaboration, or question? Feel free to drop me a message or connect directly.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      
+      <!-- Left Column: Contact Cards & Info -->
+      <div class="contact-info-col">
+        
+        <div class="availability-card glass-card">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Available for Opportunities</span>
+          </div>
+          <h3 class="avail-title">Ready for Junior Full-Stack Roles</h3>
+          <p class="avail-desc">
+            Currently open to junior developer positions, internships, and collaborative software engineering projects in South Africa (Remote, Hybrid, or On-site).
+          </p>
+        </div>
+
+        <div class="contact-cards-list">
+          <!-- Email Card -->
+          <div class="info-card glass-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">EMAIL ADDRESS</span>
+              <h4 class="card-value">bucydladla590421&#64;gmail.com</h4>
+              <div class="card-actions">
+                <a href="mailto:bucydladla590421@gmail.com" class="card-action-link">Send Email &rarr;</a>
+                <button class="copy-btn" (click)="copyEmailToClipboard()" [title]="copiedEmail() ? 'Copied!' : 'Copy to clipboard'">
+                  @if (copiedEmail()) {
+                    <span class="copied-text">✓ Copied!</span>
+                  } @else {
+                    <span>Copy</span>
+                  }
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Location Card -->
+          <div class="info-card glass-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">LOCATION</span>
+              <h4 class="card-value">Johannesburg, South Africa</h4>
+              <span class="location-tag">GMT+2 (SAST)</span>
+            </div>
+          </div>
+
+          <!-- Profiles Card -->
+          <div class="info-card glass-card">
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </div>
+            <div class="card-body">
+              <span class="card-label">PROFESSIONAL LINKS</span>
+              <h4 class="card-value">Connect on LinkedIn &amp; GitHub</h4>
+              <div class="profile-links-row">
+                <a href="https://linkedin.com/in/busisiwe-dladla" target="_blank" rel="noopener noreferrer" class="profile-chip">
+                  <i class="devicon-linkedin-plain"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/The-DigitalAcademy/city-fix" target="_blank" rel="noopener noreferrer" class="profile-chip">
+                  <i class="devicon-github-original"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive Message Form -->
+      <div class="contact-form-col">
+        <div class="form-container glass-card">
+          <h3 class="form-title">Send a Direct Message</h3>
+          <p class="form-subtitle">Fill out the form below and I will respond to your inquiry promptly.</p>
+
+          <!-- Success Alert -->
+          @if (contactService.submitSuccess()) {
+            <div class="alert-success">
+              <span class="alert-icon">🎉</span>
+              <div>
+                <strong>Message Sent Successfully!</strong>
+                <p>Thank you for reaching out, Busisiwe will get back to you soon.</p>
+              </div>
+            </div>
+          }
+
+          <!-- Error Alert -->
+          @if (contactService.errorMessage()) {
+            <div class="alert-error">
+              <span>⚠️</span>
+              <span>{{ contactService.errorMessage() }}</span>
+            </div>
+          }
+
+          <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="contact-form">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" 
+                       id="name" 
+                       name="name" 
+                       [(ngModel)]="formData.name" 
+                       required 
+                       placeholder="e.g. Sarah Jenkins"
+                       class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       [(ngModel)]="formData.email" 
+                       required 
+                       placeholder="e.g. sarah@example.com"
+                       class="form-input">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" 
+                     id="subject" 
+                     name="subject" 
+                     [(ngModel)]="formData.subject" 
+                     placeholder="e.g. Full-Stack Developer Opportunity / Project Inquiry"
+                     class="form-input">
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message <span class="required">*</span></label>
+              <textarea id="message" 
+                        name="message" 
+                        rows="5" 
+                        [(ngModel)]="formData.message" 
+                        required 
+                        placeholder="Hi Busisiwe, I came across your portfolio and wanted to discuss..."
+                        class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" 
+                    class="btn-primary form-submit-btn" 
+                    [disabled]="contactService.isSubmitting() || !formData.name || !formData.email || !formData.message">
+              @if (contactService.isSubmitting()) {
+                <span class="spinner"></span>
+                <span>Sending Message...</span>
+              } @else {
+                <span>Send Message</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              }
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,66 @@
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-tag">
+        <span class="pulse-dot"></span>
+        TECHNICAL SKILLS
+      </span>
+      <h2 class="section-title">
+        Technologies &amp; Tools I <span class="gradient-text">Work With &amp; Learn</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+        A practical overview of the tools and technologies I use to build responsive web frontends, backend APIs, and database-driven applications.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs-container">
+      <div class="filter-tabs">
+        @for (category of categories; track category.id) {
+          <button class="filter-tab-btn" 
+                  [class.active]="activeCategory() === category.id"
+                  (click)="setCategory(category.id)">
+            {{ category.label }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Skills Cards Grid -->
+    <div class="skills-grid">
+      @for (skill of filteredSkills; track skill.name) {
+        <div class="skill-card glass-card">
+          <div class="skill-header">
+            <div class="skill-icon-wrapper">
+              @if (skill.isSvg) {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="skill-svg-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              } @else {
+                <i [class]="skill.icon + ' skill-devicon'"></i>
+              }
+            </div>
+            
+            <div class="skill-meta">
+              <h3 class="skill-name">{{ skill.name }}</h3>
+              <span class="skill-level" [class.advanced]="skill.level === 'Advanced'" [class.proficient]="skill.level === 'Proficient'">
+                {{ skill.level }}
+              </span>
+            </div>
+          </div>
+
+          <p class="skill-desc">{{ skill.description }}</p>
+
+          <div class="skill-footer">
+            <span class="category-pill">{{ skill.category | uppercase }}</span>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

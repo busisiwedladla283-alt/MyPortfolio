@@ -1,0 +1,85 @@
+<footer class="footer-wrapper">
+  <div class="footer-glow"></div>
+  
+  <div class="footer-container">
+    <div class="footer-top">
+      <!-- Brand column -->
+      <div class="footer-brand-col">
+        <a href="#home" class="footer-logo" (click)="$event.preventDefault(); scrollToTop()">
+          <span class="logo-text">BD</span>
+          <span class="logo-dot"></span>
+        </a>
+        <h3 class="footer-name">Busisiwe Dladla</h3>
+        <p class="footer-tagline">Aspiring Full Stack Developer passionate about crafting responsive, user-friendly, and scalable software solutions.</p>
+        
+        <div class="footer-socials">
+          <app-social-icons layout="horizontal"></app-social-icons>
+        </div>
+      </div>
+
+      <!-- Quick Links column -->
+      <div class="footer-col">
+        <h4 class="col-title">Navigation</h4>
+        <ul class="col-list">
+          @for (item of quickLinks; track item.name) {
+            <li>
+              <a [href]="item.href" 
+                 (click)="$event.preventDefault(); scrollToSection(item.href)" 
+                 class="footer-link">
+                {{ item.name }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Featured Tech column -->
+      <div class="footer-col">
+        <h4 class="col-title">Core Technologies</h4>
+        <ul class="col-tech-list">
+          <li><span class="tech-dot"></span> Angular & TypeScript</li>
+          <li><span class="tech-dot"></span> Java & Spring Boot</li>
+          <li><span class="tech-dot"></span> PostgreSQL & REST APIs</li>
+          <li><span class="tech-dot"></span> WebSocket & STOMP</li>
+          <li><span class="tech-dot"></span> Git, GitHub & Postman</li>
+        </ul>
+      </div>
+
+      <!-- Contact column -->
+      <div class="footer-col">
+        <h4 class="col-title">Get in Touch</h4>
+        <p class="footer-contact-text">Currently seeking IT support/junior full-stack developer roles and internships.</p>
+        <a href="mailto:busisiwedladla.dev@gmail.com" class="footer-email-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span>bucydladla590421&#64;gmail.com</span>
+        </a>
+        <div class="mt-4">
+          <a href="/documents/DladlaBusisiwe.pdf" target="_blank" class="footer-cv-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" x2="12" y1="15" y2="3"></line>
+            </svg>
+            <span>Download Curriculum Vitae</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright-text">
+        &copy; {{ currentYear }} Busisiwe Dladla. Crafted with 💖 using Angular &amp; Tailwind CSS.
+      </p>
+
+      <button class="scroll-top-btn" (click)="scrollToTop()" aria-label="Scroll back to top" title="Scroll back to top">
+        <span>Back to Top</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>

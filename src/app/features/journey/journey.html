@@ -1,0 +1,67 @@
+<section id="journey" class="journey-section">
+  <div class="journey-container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <span class="section-tag">
+        <span class="pulse-dot"></span>
+        CAREER PROGRESSION
+      </span>
+      <h2 class="section-title">
+        My Evolution as a <span class="gradient-text">Technology Professional</span>
+      </h2>
+      <p class="section-subtitle mx-auto">
+       A timeline tracking my professional journey from administration and customer service to IT support and full-stack software development.      </p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-list">
+        @for (milestone of milestones; track milestone.year) {
+          <div class="timeline-item">
+            
+            <!-- Milestone Indicator -->
+            <div class="timeline-indicator">
+              <div class="indicator-dot"></div>
+              <span class="year-badge">{{ milestone.year }}</span>
+            </div>
+
+            <!-- Milestone Card -->
+            <div class="timeline-card glass-card">
+              <div class="card-header">
+                <span class="milestone-badge">{{ milestone.badge }}</span>
+                <h3 class="milestone-title">{{ milestone.title }}</h3>
+                <h4 class="milestone-subtitle">{{ milestone.subtitle }}</h4>
+              </div>
+
+              <p class="milestone-desc">{{ milestone.description }}</p>
+
+              <!-- Highlights -->
+              <div class="milestone-highlights">
+                <ul class="highlights-list">
+                  @for (hl of milestone.highlights; track hl) {
+                    <li>
+                      <span class="check-icon">✓</span>
+                      <span>{{ hl }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+
+              <!-- Tech Chips -->
+              <div class="milestone-tech">
+                @for (tech of milestone.technologies; track tech) {
+                  <span class="tech-chip">{{ tech }}</span>
+                }
+              </div>
+            </div>
+
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
